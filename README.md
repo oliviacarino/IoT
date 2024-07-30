@@ -9,7 +9,7 @@ Welcome to my IoT Projects repository! This repository contains various Internet
 
 ## ESP01s OpenMV
 
-This project involves using a breadboard kit with an OpenMV H7 R1 camera module and ESP01s to provide an internet conenction. The folder contains setup instructions, code samples, and example applications.
+This project provides an internet connection to the OpenMV H7 R1 Camera module using an ESP01s. The folder contains prototype setup instructions, code samples, and example applications.
 
 [Go to Breadboard Kit with OpenMV Cam](./Breadboard-Kit-with-OpenMV-Cam)
 
