@@ -1,5 +1,18 @@
-# Pair an ESP01s with the OpenMV Camera
-[tbd]
+# 🔮 Pair an ESP01s with the OpenMV Camera 🔮
+```
+                                (    (        *                          
+                                )\ ) )\ )   (  `                         
+                            (   (()/((()/(   )\))(      )  (  (  (        
+                            )\   /(_))/(_)) ((_)()\  ( /(  )\))( )\   (   
+                            ((_) (_)) (_))   (_()((_) )(_))((_))\((_)  )\  
+                            | __|/ __|| _ \  |  \/  |((_)_  (()(_)(_) ((_) 
+                            | _| \__ \|  _/  | |\/| |/ _` |/ _` | | |/ _|  
+                            |___||___/|_|    |_|  |_|\__,_|\__, | |_|\__|  
+                                                        |___/
+```
+
+## Purpose
+**Goal**: Use the power of an ESP to provide wifi for the OpenMV H7 R1 camera module. 
 
 
 ## Dependencies
@@ -38,8 +51,27 @@ Hit OK to continue. Open the Board Manager and search for `esp8266` and install 
 
 
 ## Connecting the ESP01s to the OpenMV Cam
-[tbd]
+I created two small files (`sketch_jul30a.ino` and `test.py`) to test the connection between the ESP01s and OpenMV Cam. It simply shows that the camera is sending the ESP a string (`Image Captured`). Note that I am using the P0 and P1 pins on the cam to use UART RX and TX respectively. This serializes data between the ESP and camera. Below is an image of the final bread board prototype:
+### Hardware Prototype
+<p align="center">
+    <img src="./images/20240730_192200.jpg" width="350" height="450">
+    <img src="./images/20240730_192204.jpg" width="350" height="450">
+</p>
 
-## Resources
+### Programming the Connection
+Use `sketch_jul30a.ino` and `test.py` to ensure your prototype is wired correctly, has enough power, etc. To run this code, upload the code from the `.ino` file to your ESP (refer to [Flashing & Programming the ESP01s](#Flashing-&-Programming-the-ESP01s)). 
+1. Connect your prototype to your PC and open up the OpenMV IDE. Run the `test.py`code within it. 
+2. Open up a terminal (I used MobaXterm) and use `telnet` to test that the ESP is receiving data. *Note, you will need to find the IP address of your ESP01s beforehand, I did this by looking at the clients connected to my router.* 
+3. Run the following command within the terminal using your ESP's IP address: `telnet 192.168.68.11 80` and observe the output. Below is a snippet of what you should see if you're using the `sketch_jul30a.ino` and `test.py` files:
+
+<br>
+    <p align="center"><img src="./images/term.jpg"></p>
+
+## Resources & Notes
+### Resources
 * If you had any issues using the driver I linked, try using the EspTools provided from this [article](https://www.instructables.com/How-to-Upload-New-Firmware-to-ESP8266-ESP-01S-ESP-/).
 * [Dealing with issues detecting a serial port within the Arduinio IDE](https://forum.arduino.cc/t/esp8266-cannot-detect-a-serial-port/937032)
+
+### Notes
+*a place for issues I ran into and you might as well.. and other tidbits*
+* d 
