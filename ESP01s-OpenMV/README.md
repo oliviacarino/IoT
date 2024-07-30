@@ -74,4 +74,4 @@ Use `sketch_jul30a.ino` and `test.py` to ensure your prototype is wired correctl
 
 ### Notes
 *a place for issues I ran into and you might as well.. and other tidbits*
-* d 
+* tbd
