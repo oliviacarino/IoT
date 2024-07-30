@@ -1,4 +1,4 @@
-# IoT Projects Repository 🌐🔗📱🏠
+# IoT Projects 🌐🔗📱🏠
 
 Welcome to my IoT Projects repository! This repository contains various Internet of Things (IoT) projects that I am working on. Each project folder includes all the necessary files, code, and documentation to understand and replicate the projects.
 
