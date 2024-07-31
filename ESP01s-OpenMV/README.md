@@ -58,7 +58,7 @@ I created two small files (`sketch_jul30a.ino` and `test.py`) to test the connec
     <img src="./images/20240730_192204.jpg" width="350" height="450">
 </p>
 
-### Programming the Connection
+### Programming the Initial Connection
 Use `sketch_jul30a.ino` and `test.py` to ensure your prototype is wired correctly, has enough power, etc. To run this code, upload the code from the `.ino` file to your ESP (refer to [Flashing & Programming the ESP01s](#Flashing-&-Programming-the-ESP01s)). 
 1. Connect your prototype to your PC and open up the OpenMV IDE. Run the `test.py`code within it. 
 2. Open up a terminal (I used MobaXterm) and use `telnet` to test that the ESP is receiving data. *Note, you will need to find the IP address of your ESP01s beforehand, I did this by looking at the clients connected to my router.* 
@@ -66,6 +66,8 @@ Use `sketch_jul30a.ino` and `test.py` to ensure your prototype is wired correctl
 
 <br>
     <p align="center"><img src="./images/term.jpg"></p>
+
+[actual serialized image data transfer TBD]
 
 ## Resources & Notes
 ### Resources
