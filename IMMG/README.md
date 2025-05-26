@@ -16,4 +16,5 @@ A cute, simplistic device that displays messages to your loved ones <3
 
 ### Dependencies
 
-## Resources & Notes
+### Notes
+- [UPDATE] add better UI for adding text
