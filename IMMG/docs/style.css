@@ -21,7 +21,6 @@ body {
     padding: 40px 20px;
 }
 
-/* Main container */
 .container {
     background: #fff0f7;
     max-width: 480px;
@@ -34,16 +33,7 @@ body {
     user-select: none;
 }
 
-/* Heading */
-h1 {
-    font-weight: 700;
-    font-size: 2.4rem;
-    margin-bottom: 35px;
-    color: #d94e90;
-    text-shadow: 1px 2px 4px #ffb7d4;
-    letter-spacing: 1.6px;
-    font-family: 'Pacifico', cursive;
-}
+/* Remove the h1 styling because no title now */
 
 /* Canvas */
 canvas#draw-canvas {
@@ -58,9 +48,9 @@ canvas#draw-canvas {
     box-shadow: inset 0 0 20px #ffc7e4;
     display: block;
     margin: 0 auto 30px auto;
-    /* Fix cursor alignment: offset by half thickness */
-    cursor: url('data:image/svg+xml;utf8,<svg height="24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5" stroke="pink" stroke-width="2" fill="none"/></svg>') 12 12, crosshair;
 }
+
+/* Other styles same as before (buttons, controls, toast, etc.) */
 
 /* Controls container */
 .controls {
@@ -257,7 +247,7 @@ canvas#draw-canvas {
     pointer-events: auto;
 }
 
-/* Make buttons and inputs a little bounce on focus */
+/* Focus bounce */
 button:focus,
 input[type="text"]:focus,
 input[type="range"]:focus {
