@@ -8,12 +8,12 @@
 body {
     font-family: 'Comic Neue', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background:
-        radial-gradient(circle at 20% 20%, #ffd0dc 15%, transparent 16%),
-        radial-gradient(circle at 80% 80%, #ffd0dc 15%, transparent 16%),
-        linear-gradient(135deg, #ffcee9, #ffc0cb);
+        radial-gradient(circle at 20% 20%, #d7c8ff 15%, transparent 16%),
+        radial-gradient(circle at 80% 80%, #d7c8ff 15%, transparent 16%),
+        linear-gradient(135deg, #d9d0ff, #bfb8ff);
     background-size: 60px 60px;
     background-repeat: repeat;
-    color: #9d385c;
+    color: #5a4599;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -22,35 +22,31 @@ body {
 }
 
 .container {
-    background: #fff0f7;
+    background: #f5f3ff;
     max-width: 480px;
     width: 100%;
     border-radius: 30px;
-    box-shadow: 0 8px 25px rgba(255, 179, 217, 0.5);
+    box-shadow: 0 8px 25px rgba(181, 165, 255, 0.5);
     padding: 35px 35px 50px 35px;
     text-align: center;
-    border: 3px solid #ff9ccf;
+    border: 3px solid #a599ff;
     user-select: none;
 }
-
-/* Remove the h1 styling because no title now */
 
 /* Canvas */
 canvas#draw-canvas {
     width: 100%;
     height: auto;
     max-width: 480px;
-    border: 4px solid #ffa6c9;
+    border: 4px solid #a599ff;
     border-radius: 30px;
-    cursor: crosshair;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="5" stroke="%236a52ff" stroke-width="2" fill="none"/><line x1="11" y1="0" x2="11" y2="22" stroke="%236a52ff" stroke-width="1"/><line x1="0" y1="11" x2="22" y2="11" stroke="%236a52ff" stroke-width="1"/></svg>') 11 11, crosshair;
     touch-action: none;
-    background-color: #fff4fb;
-    box-shadow: inset 0 0 20px #ffc7e4;
+    background-color: #f9f8ff;
+    box-shadow: inset 0 0 20px #d7d1ff;
     display: block;
     margin: 0 auto 30px auto;
 }
-
-/* Other styles same as before (buttons, controls, toast, etc.) */
 
 /* Controls container */
 .controls {
@@ -66,7 +62,7 @@ canvas#draw-canvas {
 .controls button,
 .text-input-container button,
 .send-buttons button {
-    background-color: #ff89b8;
+    background-color: #a599ff;
     border: none;
     color: #fff;
     padding: 12px 28px;
@@ -75,22 +71,22 @@ canvas#draw-canvas {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.15s ease;
     user-select: none;
-    box-shadow: 0 5px 14px rgba(255, 137, 184, 0.5);
+    box-shadow: 0 5px 14px rgba(165, 153, 255, 0.6);
     font-weight: 700;
     font-family: 'Comic Neue', cursive;
-    text-shadow: 0 1px 2px rgba(160, 30, 70, 0.4);
+    text-shadow: 0 1px 2px rgba(90, 69, 153, 0.4);
 }
 
 .controls button:hover,
 .text-input-container button:hover,
 .send-buttons button:hover {
-    background-color: #ff5f9a;
+    background-color: #7d71ff;
     transform: scale(1.07);
 }
 
 .controls button.active {
-    background-color: #ff3a78;
-    box-shadow: 0 7px 20px rgba(255, 58, 120, 0.8);
+    background-color: #6249ff;
+    box-shadow: 0 7px 20px rgba(98, 73, 255, 0.9);
     font-weight: 800;
 }
 
@@ -98,7 +94,7 @@ canvas#draw-canvas {
 .controls label {
     font-weight: 700;
     font-size: 15px;
-    color: #d94e90;
+    color: #7d71ff;
     font-family: 'Comic Neue', cursive;
 }
 
@@ -106,7 +102,37 @@ canvas#draw-canvas {
     cursor: pointer;
     width: 140px;
     -webkit-appearance: none;
-    background: transparent;
+    background: #cdc9ff;
+    border-radius: 12px;
+    height: 6px;
+    transition: background-color 0.3s ease;
+}
+
+/* Always show the slider track */
+.controls input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: #b1a9ff;
+    border-radius: 12px;
+    border: none;
+}
+
+.controls input[type="range"]:focus::-webkit-slider-runnable-track {
+    background: #7d71ff;
+}
+
+.controls input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: #b1a9ff;
+    border-radius: 12px;
+    border: none;
+}
+
+.controls input[type="range"]:focus::-moz-range-track {
+    background: #7d71ff;
 }
 
 /* Style range thumb */
@@ -115,32 +141,32 @@ canvas#draw-canvas {
     appearance: none;
     width: 24px;
     height: 24px;
-    background: #ff89b8;
+    background: #7d71ff;
     cursor: pointer;
     border-radius: 50%;
-    border: 3px solid #fff;
-    box-shadow: 0 3px 10px rgba(255, 137, 184, 0.7);
+    border: 3px solid #e4e0ff;
+    box-shadow: 0 3px 10px rgba(124, 112, 255, 0.7);
     transition: background-color 0.3s ease;
-    margin-top: -10px;
+    margin-top: -9px;
 }
 
 .controls input[type="range"]:hover::-webkit-slider-thumb {
-    background: #ff5f9a;
+    background: #6249ff;
 }
 
 .controls input[type="range"]::-moz-range-thumb {
     width: 24px;
     height: 24px;
-    background: #ff89b8;
+    background: #7d71ff;
     border-radius: 50%;
-    border: 3px solid #fff;
+    border: 3px solid #e4e0ff;
     cursor: pointer;
-    box-shadow: 0 3px 10px rgba(255, 137, 184, 0.7);
+    box-shadow: 0 3px 10px rgba(124, 112, 255, 0.7);
     transition: background-color 0.3s ease;
 }
 
 .controls input[type="range"]:hover::-moz-range-thumb {
-    background: #ff5f9a;
+    background: #6249ff;
 }
 
 /* Text input container */
@@ -156,23 +182,23 @@ canvas#draw-canvas {
     flex-grow: 1;
     font-size: 17px;
     padding: 12px 18px;
-    border: 3px solid #ff9ccf;
+    border: 3px solid #a599ff;
     border-radius: 40px;
     outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     font-family: 'Comic Neue', cursive;
-    background-color: #fff4fb;
-    color: #9d385c;
+    background-color: #f9f8ff;
+    color: #5a4599;
 }
 
 .text-input-container input[type="text"]::placeholder {
-    color: #d894b4;
+    color: #b0a9dd;
     font-style: italic;
 }
 
 .text-input-container input[type="text"]:focus {
-    border-color: #ff5f9a;
-    box-shadow: 0 0 12px #ff89b8;
+    border-color: #7d71ff;
+    box-shadow: 0 0 12px #a599ff;
 }
 
 /* Send buttons */
@@ -185,7 +211,7 @@ canvas#draw-canvas {
 }
 
 .send-buttons button {
-    background-color: #ff4a94;
+    background-color: #7d71ff;
     flex: 1 1 180px;
     max-width: 180px;
     padding: 16px 0;
@@ -193,15 +219,15 @@ canvas#draw-canvas {
     border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 8px 24px rgba(255, 74, 148, 0.7);
+    box-shadow: 0 8px 24px rgba(124, 113, 255, 0.7);
     font-family: 'Comic Neue', cursive;
     font-weight: 800;
     letter-spacing: 0.6px;
-    text-shadow: 0 1px 3px #b33a77;
+    text-shadow: 0 1px 3px #403a85;
 }
 
 .send-buttons button:hover {
-    background-color: #e53081;
+    background-color: #6249ff;
     transform: scale(1.1);
 }
 
@@ -211,7 +237,7 @@ canvas#draw-canvas {
     bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #ff89b8cc;
+    background-color: #7d71ffcc;
     color: #fff;
     padding: 16px 34px;
     border-radius: 40px;
@@ -222,7 +248,7 @@ canvas#draw-canvas {
     pointer-events: none;
     user-select: none;
     white-space: nowrap;
-    box-shadow: 0 6px 20px rgba(255, 137, 184, 0.8);
+    box-shadow: 0 6px 20px rgba(124, 113, 255, 0.8);
     transition: opacity 0.4s ease;
     font-family: 'Comic Neue', cursive;
 }
@@ -238,7 +264,7 @@ canvas#draw-canvas {
     height: 0;
     border-left: 12px solid transparent;
     border-right: 12px solid transparent;
-    border-top: 18px solid #ff89b8cc;
+    border-top: 18px solid #7d71ffcc;
 }
 
 /* Show toast */
@@ -254,5 +280,5 @@ input[type="range"]:focus {
     outline: none;
     transform: scale(1.03);
     transition: transform 0.15s ease;
-    box-shadow: 0 0 10px #ff5f9a;
+    box-shadow: 0 0 10px #7d71ff;
 }
