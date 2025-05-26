@@ -6,9 +6,9 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f7f9fc;
-    color: #333;
+    font-family: 'Comic Neue', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+    color: #5a3e36;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -18,21 +18,26 @@ body {
 
 /* Main container */
 .container {
-    background-color: #fff;
+    background-color: #fff0f6;
     max-width: 480px;
     width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    padding: 25px 30px 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(238, 156, 167, 0.3);
+    padding: 30px 30px 45px 30px;
     text-align: center;
+    border: 2px solid #ff9aa2;
+    user-select: none;
 }
 
 /* Heading */
 h1 {
-    font-weight: 600;
-    font-size: 1.8rem;
-    margin-bottom: 25px;
-    color: #222;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #d44d79;
+    text-shadow: 1px 1px 3px #ffb7c5;
+    letter-spacing: 1.2px;
+    font-family: 'Pacifico', cursive;
 }
 
 /* Canvas */
@@ -40,21 +45,22 @@ canvas#draw-canvas {
     width: 100%;
     height: auto;
     max-width: 480px;
-    border: 2px solid #ddd;
-    border-radius: 10px;
+    border: 3px solid #ff9aa2;
+    border-radius: 20px;
     cursor: crosshair;
     touch-action: none;
-    background-color: white;
+    background-color: #fff0f6;
+    box-shadow: inset 0 0 15px #ffd1dc;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 25px auto;
 }
 
 /* Controls group */
 .controls {
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
     justify-content: center;
     align-items: center;
 }
@@ -63,25 +69,30 @@ canvas#draw-canvas {
 .controls button,
 .text-input-container button,
 .send-buttons button {
-    background-color: #4f46e5;
+    background-color: #ff6f91;
     border: none;
     color: #fff;
-    padding: 8px 16px;
+    padding: 10px 20px;
     font-size: 16px;
-    border-radius: 8px;
+    border-radius: 30px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.25s ease, transform 0.15s ease;
     user-select: none;
+    box-shadow: 0 4px 12px rgba(255, 111, 145, 0.4);
+    font-weight: 600;
+    font-family: 'Comic Neue', cursive;
 }
 
 .controls button:hover,
 .text-input-container button:hover,
 .send-buttons button:hover {
-    background-color: #4338ca;
+    background-color: #ff4e7a;
+    transform: scale(1.05);
 }
 
 .controls button.active {
-    background-color: #7c3aed;
+    background-color: #ff3b67;
+    box-shadow: 0 6px 16px rgba(255, 59, 103, 0.7);
     font-weight: 700;
 }
 
@@ -89,12 +100,13 @@ canvas#draw-canvas {
 .controls label {
     font-weight: 600;
     font-size: 14px;
-    color: #555;
+    color: #d44d79;
+    font-family: 'Comic Neue', cursive;
 }
 
 .controls input[type="range"] {
     cursor: pointer;
-    width: 120px;
+    width: 140px;
     -webkit-appearance: none;
     background: transparent;
 }
@@ -103,32 +115,34 @@ canvas#draw-canvas {
 .controls input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 16px;
-    height: 16px;
-    background: #4f46e5;
+    width: 22px;
+    height: 22px;
+    background: #ff6f91;
     cursor: pointer;
     border-radius: 50%;
-    border: none;
-    margin-top: -6px;
-    transition: background-color 0.3s ease;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 6px rgba(255, 111, 145, 0.7);
+    transition: background-color 0.25s ease;
+    margin-top: -9px;
 }
 
 .controls input[type="range"]:hover::-webkit-slider-thumb {
-    background: #4338ca;
+    background: #ff4e7a;
 }
 
 .controls input[type="range"]::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    background: #4f46e5;
+    width: 22px;
+    height: 22px;
+    background: #ff6f91;
     border-radius: 50%;
-    border: none;
+    border: 3px solid #fff;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 6px rgba(255, 111, 145, 0.7);
+    transition: background-color 0.25s ease;
 }
 
 .controls input[type="range"]:hover::-moz-range-thumb {
-    background: #4338ca;
+    background: #ff4e7a;
 }
 
 /* Text input container */
@@ -143,15 +157,17 @@ canvas#draw-canvas {
 .text-input-container input[type="text"] {
     flex-grow: 1;
     font-size: 16px;
-    padding: 8px 12px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
+    padding: 10px 14px;
+    border: 2px solid #ff9aa2;
+    border-radius: 30px;
     outline: none;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Comic Neue', cursive;
 }
 
 .text-input-container input[type="text"]:focus {
-    border-color: #4f46e5;
+    border-color: #ff4e7a;
+    box-shadow: 0 0 8px #ff6f91;
 }
 
 /* Send buttons */
@@ -164,38 +180,43 @@ canvas#draw-canvas {
 }
 
 .send-buttons button {
-    background-color: #2563eb;
+    background-color: #ff4081;
     flex: 1 1 180px;
     max-width: 180px;
-    padding: 12px 0;
+    padding: 14px 0;
     font-size: 18px;
-    border-radius: 10px;
+    border-radius: 30px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 6px 20px rgba(255, 64, 129, 0.5);
+    font-family: 'Comic Neue', cursive;
 }
 
 .send-buttons button:hover {
-    background-color: #1e40af;
+    background-color: #e91e63;
+    transform: scale(1.07);
 }
 
 /* Toast styling */
 #toast {
     position: fixed;
-    bottom: 30px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(60, 60, 60, 0.9);
+    background-color: #ff6f91cc;
     color: #fff;
-    padding: 12px 24px;
-    border-radius: 25px;
+    padding: 14px 28px;
+    border-radius: 50px;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
     z-index: 1000;
     opacity: 0;
     pointer-events: none;
     user-select: none;
     white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(255, 111, 145, 0.7);
     transition: opacity 0.4s ease;
+    font-family: 'Comic Neue', cursive;
 }
 
 /* Show toast */
