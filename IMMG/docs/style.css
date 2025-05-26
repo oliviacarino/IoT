@@ -1,4 +1,4 @@
-/* Reset & base styles */
+/* Reset & base */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,36 +7,41 @@
 
 body {
     font-family: 'Comic Neue', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
-    color: #5a3e36;
+    background:
+        radial-gradient(circle at 20% 20%, #ffd0dc 15%, transparent 16%),
+        radial-gradient(circle at 80% 80%, #ffd0dc 15%, transparent 16%),
+        linear-gradient(135deg, #ffcee9, #ffc0cb);
+    background-size: 60px 60px;
+    background-repeat: repeat;
+    color: #9d385c;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
-    padding: 30px 15px;
+    padding: 40px 20px;
 }
 
 /* Main container */
 .container {
-    background-color: #fff0f6;
+    background: #fff0f7;
     max-width: 480px;
     width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(238, 156, 167, 0.3);
-    padding: 30px 30px 45px 30px;
+    border-radius: 30px;
+    box-shadow: 0 8px 25px rgba(255, 179, 217, 0.5);
+    padding: 35px 35px 50px 35px;
     text-align: center;
-    border: 2px solid #ff9aa2;
+    border: 3px solid #ff9ccf;
     user-select: none;
 }
 
 /* Heading */
 h1 {
     font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 30px;
-    color: #d44d79;
-    text-shadow: 1px 1px 3px #ffb7c5;
-    letter-spacing: 1.2px;
+    font-size: 2.4rem;
+    margin-bottom: 35px;
+    color: #d94e90;
+    text-shadow: 1px 2px 4px #ffb7d4;
+    letter-spacing: 1.6px;
     font-family: 'Pacifico', cursive;
 }
 
@@ -45,22 +50,24 @@ canvas#draw-canvas {
     width: 100%;
     height: auto;
     max-width: 480px;
-    border: 3px solid #ff9aa2;
-    border-radius: 20px;
+    border: 4px solid #ffa6c9;
+    border-radius: 30px;
     cursor: crosshair;
     touch-action: none;
-    background-color: #fff0f6;
-    box-shadow: inset 0 0 15px #ffd1dc;
+    background-color: #fff4fb;
+    box-shadow: inset 0 0 20px #ffc7e4;
     display: block;
-    margin: 0 auto 25px auto;
+    margin: 0 auto 30px auto;
+    /* Fix cursor alignment: offset by half thickness */
+    cursor: url('data:image/svg+xml;utf8,<svg height="24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5" stroke="pink" stroke-width="2" fill="none"/></svg>') 12 12, crosshair;
 }
 
-/* Controls group */
+/* Controls container */
 .controls {
-    margin-top: 10px;
+    margin-top: 15px;
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 14px;
     justify-content: center;
     align-items: center;
 }
@@ -69,38 +76,39 @@ canvas#draw-canvas {
 .controls button,
 .text-input-container button,
 .send-buttons button {
-    background-color: #ff6f91;
+    background-color: #ff89b8;
     border: none;
     color: #fff;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 30px;
+    padding: 12px 28px;
+    font-size: 17px;
+    border-radius: 40px;
     cursor: pointer;
-    transition: background-color 0.25s ease, transform 0.15s ease;
+    transition: background-color 0.3s ease, transform 0.15s ease;
     user-select: none;
-    box-shadow: 0 4px 12px rgba(255, 111, 145, 0.4);
-    font-weight: 600;
+    box-shadow: 0 5px 14px rgba(255, 137, 184, 0.5);
+    font-weight: 700;
     font-family: 'Comic Neue', cursive;
+    text-shadow: 0 1px 2px rgba(160, 30, 70, 0.4);
 }
 
 .controls button:hover,
 .text-input-container button:hover,
 .send-buttons button:hover {
-    background-color: #ff4e7a;
-    transform: scale(1.05);
+    background-color: #ff5f9a;
+    transform: scale(1.07);
 }
 
 .controls button.active {
-    background-color: #ff3b67;
-    box-shadow: 0 6px 16px rgba(255, 59, 103, 0.7);
-    font-weight: 700;
+    background-color: #ff3a78;
+    box-shadow: 0 7px 20px rgba(255, 58, 120, 0.8);
+    font-weight: 800;
 }
 
 /* Thickness range */
 .controls label {
-    font-weight: 600;
-    font-size: 14px;
-    color: #d44d79;
+    font-weight: 700;
+    font-size: 15px;
+    color: #d94e90;
     font-family: 'Comic Neue', cursive;
 }
 
@@ -115,98 +123,108 @@ canvas#draw-canvas {
 .controls input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 22px;
-    height: 22px;
-    background: #ff6f91;
+    width: 24px;
+    height: 24px;
+    background: #ff89b8;
     cursor: pointer;
     border-radius: 50%;
     border: 3px solid #fff;
-    box-shadow: 0 2px 6px rgba(255, 111, 145, 0.7);
-    transition: background-color 0.25s ease;
-    margin-top: -9px;
+    box-shadow: 0 3px 10px rgba(255, 137, 184, 0.7);
+    transition: background-color 0.3s ease;
+    margin-top: -10px;
 }
 
 .controls input[type="range"]:hover::-webkit-slider-thumb {
-    background: #ff4e7a;
+    background: #ff5f9a;
 }
 
 .controls input[type="range"]::-moz-range-thumb {
-    width: 22px;
-    height: 22px;
-    background: #ff6f91;
+    width: 24px;
+    height: 24px;
+    background: #ff89b8;
     border-radius: 50%;
     border: 3px solid #fff;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(255, 111, 145, 0.7);
-    transition: background-color 0.25s ease;
+    box-shadow: 0 3px 10px rgba(255, 137, 184, 0.7);
+    transition: background-color 0.3s ease;
 }
 
 .controls input[type="range"]:hover::-moz-range-thumb {
-    background: #ff4e7a;
+    background: #ff5f9a;
 }
 
 /* Text input container */
 .text-input-container {
-    margin-top: 25px;
+    margin-top: 30px;
     display: flex;
-    gap: 10px;
+    gap: 14px;
     justify-content: center;
     align-items: center;
 }
 
 .text-input-container input[type="text"] {
     flex-grow: 1;
-    font-size: 16px;
-    padding: 10px 14px;
-    border: 2px solid #ff9aa2;
-    border-radius: 30px;
+    font-size: 17px;
+    padding: 12px 18px;
+    border: 3px solid #ff9ccf;
+    border-radius: 40px;
     outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     font-family: 'Comic Neue', cursive;
+    background-color: #fff4fb;
+    color: #9d385c;
+}
+
+.text-input-container input[type="text"]::placeholder {
+    color: #d894b4;
+    font-style: italic;
 }
 
 .text-input-container input[type="text"]:focus {
-    border-color: #ff4e7a;
-    box-shadow: 0 0 8px #ff6f91;
+    border-color: #ff5f9a;
+    box-shadow: 0 0 12px #ff89b8;
 }
 
 /* Send buttons */
 .send-buttons {
-    margin-top: 30px;
+    margin-top: 35px;
     display: flex;
-    gap: 20px;
+    gap: 24px;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .send-buttons button {
-    background-color: #ff4081;
+    background-color: #ff4a94;
     flex: 1 1 180px;
     max-width: 180px;
-    padding: 14px 0;
-    font-size: 18px;
-    border-radius: 30px;
+    padding: 16px 0;
+    font-size: 19px;
+    border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 6px 20px rgba(255, 64, 129, 0.5);
+    box-shadow: 0 8px 24px rgba(255, 74, 148, 0.7);
     font-family: 'Comic Neue', cursive;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-shadow: 0 1px 3px #b33a77;
 }
 
 .send-buttons button:hover {
-    background-color: #e91e63;
-    transform: scale(1.07);
+    background-color: #e53081;
+    transform: scale(1.1);
 }
 
-/* Toast styling */
+/* Toast styling with speech bubble tail */
 #toast {
     position: fixed;
-    bottom: 40px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #ff6f91cc;
+    background-color: #ff89b8cc;
     color: #fff;
-    padding: 14px 28px;
-    border-radius: 50px;
+    padding: 16px 34px;
+    border-radius: 40px;
     font-size: 16px;
     font-weight: 700;
     z-index: 1000;
@@ -214,13 +232,37 @@ canvas#draw-canvas {
     pointer-events: none;
     user-select: none;
     white-space: nowrap;
-    box-shadow: 0 4px 16px rgba(255, 111, 145, 0.7);
+    box-shadow: 0 6px 20px rgba(255, 137, 184, 0.8);
     transition: opacity 0.4s ease;
     font-family: 'Comic Neue', cursive;
+}
+
+/* Toast arrow */
+#toast.show::after {
+    content: "";
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 18px solid #ff89b8cc;
 }
 
 /* Show toast */
 #toast.show {
     opacity: 1;
     pointer-events: auto;
+}
+
+/* Make buttons and inputs a little bounce on focus */
+button:focus,
+input[type="text"]:focus,
+input[type="range"]:focus {
+    outline: none;
+    transform: scale(1.03);
+    transition: transform 0.15s ease;
+    box-shadow: 0 0 10px #ff5f9a;
 }
