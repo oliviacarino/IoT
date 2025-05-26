@@ -1,284 +1,109 @@
-/* Reset & base */
-* {
-    box-sizing: border-box;
+body {
+    font-family: "Comic Sans MS", "Chalkboard SE", cursive;
+    background-color: #f5e6ff;
+    background-image: radial-gradient(#f3d9ff 1px, transparent 1px);
+    background-size: 20px 20px;
     margin: 0;
-    padding: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #7a49a5;
 }
 
-body {
-    font-family: 'Comic Neue', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background:
-        radial-gradient(circle at 20% 20%, #d7c8ff 15%, transparent 16%),
-        radial-gradient(circle at 80% 80%, #d7c8ff 15%, transparent 16%),
-        linear-gradient(135deg, #d9d0ff, #bfb8ff);
-    background-size: 60px 60px;
-    background-repeat: repeat;
-    color: #5a4599;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding: 40px 20px;
+h1 {
+    display: none;
+    /* Title removed */
 }
 
 .container {
-    background: #f5f3ff;
-    max-width: 480px;
-    width: 100%;
-    border-radius: 30px;
-    box-shadow: 0 8px 25px rgba(181, 165, 255, 0.5);
-    padding: 35px 35px 50px 35px;
-    text-align: center;
-    border: 3px solid #a599ff;
-    user-select: none;
+    background-color: #fff0ff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(200, 148, 255, 0.3);
+    max-width: 420px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Canvas */
-canvas#draw-canvas {
-    width: 100%;
-    height: auto;
-    max-width: 480px;
-    border: 4px solid #a599ff;
-    border-radius: 30px;
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="5" stroke="%236a52ff" stroke-width="2" fill="none"/><line x1="11" y1="0" x2="11" y2="22" stroke="%236a52ff" stroke-width="1"/><line x1="0" y1="11" x2="22" y2="11" stroke="%236a52ff" stroke-width="1"/></svg>') 11 11, crosshair;
+canvas {
+    border: 2px solid #d8b4fe;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(200, 148, 255, 0.3);
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23c084fc" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 1.01 4.5 2.09C13.09 4.01 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') 12 21, auto;
     touch-action: none;
-    background-color: #f9f8ff;
-    box-shadow: inset 0 0 20px #d7d1ff;
-    display: block;
-    margin: 0 auto 30px auto;
+    margin-bottom: 16px;
 }
 
-/* Controls container */
 .controls {
-    margin-top: 15px;
     display: flex;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: 10px;
     justify-content: center;
-    align-items: center;
+    margin-bottom: 12px;
 }
 
-/* Buttons */
-.controls button,
-.text-input-container button,
-.send-buttons button {
-    background-color: #a599ff;
-    border: none;
-    color: #fff;
-    padding: 12px 28px;
-    font-size: 17px;
-    border-radius: 40px;
+button,
+input[type="range"] {
+    font-family: inherit;
+    background-color: #e9d5ff;
+    border: 2px solid #d8b4fe;
+    border-radius: 10px;
+    padding: 6px 12px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.15s ease;
-    user-select: none;
-    box-shadow: 0 5px 14px rgba(165, 153, 255, 0.6);
-    font-weight: 700;
-    font-family: 'Comic Neue', cursive;
-    text-shadow: 0 1px 2px rgba(90, 69, 153, 0.4);
+    color: #6b21a8;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
-.controls button:hover,
-.text-input-container button:hover,
-.send-buttons button:hover {
-    background-color: #7d71ff;
-    transform: scale(1.07);
+button:hover,
+input[type="range"]:hover {
+    background-color: #f3e8ff;
+    transform: scale(1.05);
 }
 
-.controls button.active {
-    background-color: #6249ff;
-    box-shadow: 0 7px 20px rgba(98, 73, 255, 0.9);
-    font-weight: 800;
+button.active {
+    background-color: #d8b4fe;
+    color: white;
 }
 
-/* Thickness range */
-.controls label {
-    font-weight: 700;
-    font-size: 15px;
-    color: #7d71ff;
-    font-family: 'Comic Neue', cursive;
-}
-
-.controls input[type="range"] {
-    cursor: pointer;
-    width: 140px;
-    -webkit-appearance: none;
-    background: #cdc9ff;
-    border-radius: 12px;
-    height: 6px;
-    transition: background-color 0.3s ease;
-}
-
-/* Always show the slider track */
-.controls input[type="range"]::-webkit-slider-runnable-track {
+input[type="text"] {
+    border: 2px solid #d8b4fe;
+    border-radius: 10px;
+    padding: 6px 10px;
+    font-size: 14px;
     width: 100%;
-    height: 6px;
-    cursor: pointer;
-    background: #b1a9ff;
-    border-radius: 12px;
-    border: none;
+    box-sizing: border-box;
 }
 
-.controls input[type="range"]:focus::-webkit-slider-runnable-track {
-    background: #7d71ff;
-}
-
-.controls input[type="range"]::-moz-range-track {
-    width: 100%;
-    height: 6px;
-    cursor: pointer;
-    background: #b1a9ff;
-    border-radius: 12px;
-    border: none;
-}
-
-.controls input[type="range"]:focus::-moz-range-track {
-    background: #7d71ff;
-}
-
-/* Style range thumb */
-.controls input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 24px;
-    height: 24px;
-    background: #7d71ff;
-    cursor: pointer;
-    border-radius: 50%;
-    border: 3px solid #e4e0ff;
-    box-shadow: 0 3px 10px rgba(124, 112, 255, 0.7);
-    transition: background-color 0.3s ease;
-    margin-top: -9px;
-}
-
-.controls input[type="range"]:hover::-webkit-slider-thumb {
-    background: #6249ff;
-}
-
-.controls input[type="range"]::-moz-range-thumb {
-    width: 24px;
-    height: 24px;
-    background: #7d71ff;
-    border-radius: 50%;
-    border: 3px solid #e4e0ff;
-    cursor: pointer;
-    box-shadow: 0 3px 10px rgba(124, 112, 255, 0.7);
-    transition: background-color 0.3s ease;
-}
-
-.controls input[type="range"]:hover::-moz-range-thumb {
-    background: #6249ff;
-}
-
-/* Text input container */
-.text-input-container {
-    margin-top: 30px;
-    display: flex;
-    gap: 14px;
-    justify-content: center;
-    align-items: center;
-}
-
-.text-input-container input[type="text"] {
-    flex-grow: 1;
-    font-size: 17px;
-    padding: 12px 18px;
-    border: 3px solid #a599ff;
-    border-radius: 40px;
-    outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    font-family: 'Comic Neue', cursive;
-    background-color: #f9f8ff;
-    color: #5a4599;
-}
-
-.text-input-container input[type="text"]::placeholder {
-    color: #b0a9dd;
-    font-style: italic;
-}
-
-.text-input-container input[type="text"]:focus {
-    border-color: #7d71ff;
-    box-shadow: 0 0 12px #a599ff;
-}
-
-/* Send buttons */
-.send-buttons {
-    margin-top: 35px;
-    display: flex;
-    gap: 24px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.send-buttons button {
-    background-color: #7d71ff;
-    flex: 1 1 180px;
-    max-width: 180px;
-    padding: 16px 0;
-    font-size: 19px;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 8px 24px rgba(124, 113, 255, 0.7);
-    font-family: 'Comic Neue', cursive;
-    font-weight: 800;
-    letter-spacing: 0.6px;
-    text-shadow: 0 1px 3px #403a85;
-}
-
-.send-buttons button:hover {
-    background-color: #6249ff;
-    transform: scale(1.1);
-}
-
-/* Toast styling with speech bubble tail */
-#toast {
+.toast {
     position: fixed;
-    bottom: 50px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #7d71ffcc;
-    color: #fff;
-    padding: 16px 34px;
-    border-radius: 40px;
-    font-size: 16px;
-    font-weight: 700;
-    z-index: 1000;
-    opacity: 0;
-    pointer-events: none;
-    user-select: none;
-    white-space: nowrap;
-    box-shadow: 0 6px 20px rgba(124, 113, 255, 0.8);
-    transition: opacity 0.4s ease;
-    font-family: 'Comic Neue', cursive;
+    background-color: #e9d5ff;
+    color: #6b21a8;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(136, 72, 171, 0.2);
+    animation: fadeOut 3s ease-in-out forwards;
+    z-index: 999;
 }
 
-/* Toast arrow */
-#toast.show::after {
-    content: "";
-    position: absolute;
-    bottom: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-top: 18px solid #7d71ffcc;
-}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
 
-/* Show toast */
-#toast.show {
-    opacity: 1;
-    pointer-events: auto;
-}
+    70% {
+        opacity: 1;
+    }
 
-/* Focus bounce */
-button:focus,
-input[type="text"]:focus,
-input[type="range"]:focus {
-    outline: none;
-    transform: scale(1.03);
-    transition: transform 0.15s ease;
-    box-shadow: 0 0 10px #7d71ff;
+    100% {
+        opacity: 0;
+    }
 }
