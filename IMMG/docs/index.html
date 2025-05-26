@@ -3,38 +3,41 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LoveNote</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sweet Drawing Gift</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
     <div class="container">
-        <h1>LoveNote</h1>
-        <canvas id="draw-canvas" width="400" height="300"></canvas>
+        <h1>Draw or Write Your Message</h1>
+
+        <canvas id="draw-canvas" width="400" height="400"></canvas>
 
         <div class="controls">
-            <label for="text-input">Text:</label>
-            <input type="text" id="text-input" placeholder="Write something sweet" />
+            <button id="draw-btn" class="active" onclick="setTool('draw')">✏️ Draw</button>
+            <button id="erase-btn" onclick="setTool('erase')">🧽 Erase</button>
+            <label for="thickness">Thickness:</label>
+            <input id="thickness" type="range" min="1" max="20" value="4" />
+            <button onclick="clearCanvas()">Clear</button>
+        </div>
+
+        <div class="text-input-container">
+            <input id="text-input" type="text" placeholder="Type your text here..." />
             <button onclick="addText()">Add Text</button>
         </div>
 
-        <div class="tools">
-            <label for="thickness">Pencil:</label>
-            <input type="range" min="1" max="10" value="2" id="thickness" />
-
-            <button onclick="setTool('draw')" id="draw-btn" class="active">🖊️ Draw</button>
-            <button onclick="setTool('erase')" id="erase-btn">🧽 Erase</button>
-            <button onclick="clearCanvas()">🗑️ Clear</button>
+        <div class="send-buttons">
+            <button onclick="sendImage()">Send Drawing</button>
+            <button onclick="sendText()">Send Text</button>
         </div>
-
-        <button class="send-btn" onclick="sendImage()">💌 Send</button>
     </div>
 
-    <!-- JS  -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js"></script>
+    <!-- Toast container -->
+    <div id="toast"></div>
 
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="app.js"></script>
 </body>
 
