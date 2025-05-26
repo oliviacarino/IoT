@@ -1,6 +1,6 @@
 # I Miss My Girlfriend (IMMG) ™
 <p align="center"><img alt="AeroPi" src="kit.jpeg" width="400"></p>
-<p align="center"><em>like if you cry every tim</em></p>
+<p align="center"><em>⭐~star~⭐ if you cry every tim</em></p>
 
 ## Purpose
 A cute, simplistic device that displays messages to your loved ones <3
