@@ -1,63 +1,82 @@
-/* Reset some basic styles */
+/* Reset & base styles */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f7f9fc;
+    background-color: #f7f9fc;
     color: #333;
-    margin: 0;
-    padding: 20px;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 30px 15px;
 }
 
+/* Main container */
 .container {
+    background-color: #fff;
     max-width: 480px;
     width: 100%;
-    background: white;
-    padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px 30px 40px 30px;
     text-align: center;
 }
 
+/* Heading */
 h1 {
-    margin-bottom: 20px;
     font-weight: 600;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
     color: #222;
 }
 
-canvas {
+/* Canvas */
+canvas#draw-canvas {
+    width: 100%;
+    height: auto;
+    max-width: 480px;
     border: 2px solid #ddd;
     border-radius: 10px;
     cursor: crosshair;
     touch-action: none;
-    /* prevent touch scrolling on canvas */
+    background-color: white;
+    display: block;
+    margin: 0 auto;
 }
 
+/* Controls group */
 .controls {
-    margin-top: 15px;
+    margin-top: 20px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
     flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
-.controls button {
+/* Buttons */
+.controls button,
+.text-input-container button,
+.send-buttons button {
     background-color: #4f46e5;
     border: none;
-    color: white;
+    color: #fff;
     padding: 8px 16px;
     font-size: 16px;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    user-select: none;
 }
 
-.controls button:hover {
+.controls button:hover,
+.text-input-container button:hover,
+.send-buttons button:hover {
     background-color: #4338ca;
 }
 
@@ -66,22 +85,65 @@ canvas {
     font-weight: 700;
 }
 
-.controls input[type="range"] {
-    width: 120px;
-    cursor: pointer;
+/* Thickness range */
+.controls label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #555;
 }
 
+.controls input[type="range"] {
+    cursor: pointer;
+    width: 120px;
+    -webkit-appearance: none;
+    background: transparent;
+}
+
+/* Style range thumb */
+.controls input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #4f46e5;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    margin-top: -6px;
+    transition: background-color 0.3s ease;
+}
+
+.controls input[type="range"]:hover::-webkit-slider-thumb {
+    background: #4338ca;
+}
+
+.controls input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #4f46e5;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.controls input[type="range"]:hover::-moz-range-thumb {
+    background: #4338ca;
+}
+
+/* Text input container */
 .text-input-container {
-    margin-top: 20px;
+    margin-top: 25px;
     display: flex;
-    justify-content: center;
     gap: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 .text-input-container input[type="text"] {
-    flex: 1;
-    padding: 8px 12px;
+    flex-grow: 1;
     font-size: 16px;
+    padding: 8px 12px;
     border: 2px solid #ddd;
     border-radius: 8px;
     outline: none;
@@ -92,39 +154,24 @@ canvas {
     border-color: #4f46e5;
 }
 
-.text-input-container button {
-    background-color: #10b981;
-    border: none;
-    color: white;
-    padding: 8px 16px;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.text-input-container button:hover {
-    background-color: #059669;
-}
-
+/* Send buttons */
 .send-buttons {
-    margin-top: 25px;
+    margin-top: 30px;
     display: flex;
     gap: 20px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .send-buttons button {
     background-color: #2563eb;
-    border: none;
-    color: white;
-    padding: 12px 24px;
+    flex: 1 1 180px;
+    max-width: 180px;
+    padding: 12px 0;
     font-size: 18px;
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    flex: 1;
-    max-width: 180px;
 }
 
 .send-buttons button:hover {
@@ -137,13 +184,22 @@ canvas {
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
+    background-color: rgba(60, 60, 60, 0.9);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 25px;
     font-size: 16px;
+    font-weight: 600;
     z-index: 1000;
     opacity: 0;
-    transition: opacity 0.5s ease;
     pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+    transition: opacity 0.4s ease;
+}
+
+/* Show toast */
+#toast.show {
+    opacity: 1;
+    pointer-events: auto;
 }

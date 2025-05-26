@@ -1,3 +1,4 @@
+// Get canvas and context
 const canvas = document.getElementById("draw-canvas");
 const ctx = canvas.getContext("2d");
 const thicknessInput = document.getElementById("thickness");
@@ -61,7 +62,7 @@ function draw(e) {
     ctx.moveTo(lastPos.x, lastPos.y);
     ctx.lineTo(x, y);
     ctx.stroke();
-
+    
     lastPos = { x, y };
   }
 }
@@ -96,37 +97,37 @@ function addText() {
   ctx.font = "20px sans-serif";
   ctx.fillStyle = "black";
   ctx.fillText(text, 10, canvas.height - 20);
+  document.getElementById("text-input").value = "";
 }
 
-// Toast notification function
 function showToast(message) {
   let toast = document.getElementById("toast");
   if (!toast) {
     toast = document.createElement("div");
     toast.id = "toast";
-    toast.style.position = "fixed";
-    toast.style.bottom = "30px";
-    toast.style.left = "50%";
-    toast.style.transform = "translateX(-50%)";
-    toast.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
-    toast.style.color = "white";
-    toast.style.padding = "10px 20px";
-    toast.style.borderRadius = "20px";
-    toast.style.fontSize = "16px";
-    toast.style.zIndex = "1000";
-    toast.style.opacity = "0";
-    toast.style.transition = "opacity 0.5s ease";
     document.body.appendChild(toast);
   }
   toast.textContent = message;
-  toast.style.opacity = "1";
+  toast.classList.add("show");
 
+  // Hide after 3 seconds
   setTimeout(() => {
-    toast.style.opacity = "0";
-  }, 2000);
+    toast.classList.remove("show");
+  }, 3000);
 }
 
-// Firebase config for middleware
+function sendImage() {
+  const dataURL = canvas.toDataURL("image/png");
+  fetch("https://your-backend-or-storage.com/upload", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ image: dataURL }),
+  })
+  .then(() => showToast("Message sent!"))
+  .catch(() => showToast("Failed to send message."));
+}
+
+// Firebase config for middleware (replace with your own config)
 const firebaseConfig = {
   apiKey: "AIzaSyDrGnVzr3nvLSF0C9JUYdmNLlQPcFGxLtk",
   authDomain: "immg-eb767.firebaseapp.com",
@@ -136,40 +137,5 @@ const firebaseConfig = {
   messagingSenderId: "407794462813",
   appId: "1:407794462813:web:cd56f4aadde9ec4b199db4"
 };
-
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
-
-function sendImage() {
-  const dataURL = canvas.toDataURL("image/png");
-
-  database.ref("messages").push({
-    type: "drawing",
-    content: dataURL,
-    timestamp: Date.now()
-  }).then(() => {
-    showToast("Drawing sent!");
-  }).catch((error) => {
-    console.error("Error sending drawing:", error);
-    showToast("Failed to send drawing.");
-  });
-}
-
-// function sendText() {
-//   const text = document.getElementById("text-input").value.trim();
-//   if (!text) {
-//     showToast("Text cannot be empty.");
-//     return;
-//   }
-
-//   database.ref("messages").push({
-//     type: "text",
-//     content: text,
-//     timestamp: Date.now()
-//   }).then(() => {
-//     showToast("Text sent!");
-//   }).catch((error) => {
-//     console.error("Error sending text:", error);
-//     showToast("Failed to send text.");
-//   });
-// }
