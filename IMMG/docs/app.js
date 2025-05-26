@@ -1,4 +1,3 @@
-// Get canvas and context
 const canvas = document.getElementById("draw-canvas");
 const ctx = canvas.getContext("2d");
 const thicknessInput = document.getElementById("thickness");
@@ -8,7 +7,7 @@ let tool = "draw";
 let lastPos = { x: 0, y: 0 };
 
 function initCanvas() {
-  ctx.fillStyle = "white"; // Fill background white for erasing to work
+  ctx.fillStyle = "white";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 initCanvas();
@@ -24,8 +23,8 @@ canvas.addEventListener("touchmove", (e) => draw(e.touches[0]), { passive: false
 function getCanvasPos(e) {
   const rect = canvas.getBoundingClientRect();
   return {
-    x: e.clientX - rect.left,
-    y: e.clientY - rect.top,
+    x: (e.clientX - rect.left) * (canvas.width / rect.width),
+    y: (e.clientY - rect.top) * (canvas.height / rect.height)
   };
 }
 
@@ -41,8 +40,8 @@ function startDrawing(e) {
 
   ctx.strokeStyle = (tool === "erase") ? "white" : "black";
   ctx.lineWidth = (tool === "erase") ? 20 : thicknessInput.value;
-  ctx.lineCap = "round";  // smooth line ends
-  ctx.lineJoin = "round"; // smooth line joins
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
 }
 
 function draw(e) {
@@ -50,9 +49,8 @@ function draw(e) {
   e.preventDefault();
 
   const pos = getCanvasPos(e);
-
   const dist = Math.hypot(pos.x - lastPos.x, pos.y - lastPos.y);
-  const steps = Math.ceil(dist / 2); // adjust 2 for smoothness (smaller = smoother)
+  const steps = Math.ceil(dist / 2);
 
   for (let i = 1; i <= steps; i++) {
     const x = lastPos.x + ((pos.x - lastPos.x) * i) / steps;
@@ -62,7 +60,7 @@ function draw(e) {
     ctx.moveTo(lastPos.x, lastPos.y);
     ctx.lineTo(x, y);
     ctx.stroke();
-    
+
     lastPos = { x, y };
   }
 }
@@ -90,27 +88,17 @@ function clearCanvas() {
   initCanvas();
 }
 
-function addText() {
-  const text = document.getElementById("text-input").value.trim();
-  if (!text) return;
-
-  ctx.font = "20px sans-serif";
-  ctx.fillStyle = "black";
-  ctx.fillText(text, 10, canvas.height - 20);
-  document.getElementById("text-input").value = "";
-}
-
 function showToast(message) {
   let toast = document.getElementById("toast");
   if (!toast) {
     toast = document.createElement("div");
     toast.id = "toast";
+    toast.className = "toast";
     document.body.appendChild(toast);
   }
   toast.textContent = message;
   toast.classList.add("show");
 
-  // Hide after 3 seconds
   setTimeout(() => {
     toast.classList.remove("show");
   }, 3000);
@@ -123,11 +111,11 @@ function sendImage() {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ image: dataURL }),
   })
-  .then(() => showToast("Message sent!"))
-  .catch(() => showToast("Failed to send message."));
+    .then(() => showToast("Message sent!"))
+    .catch(() => showToast("Failed to send message."));
 }
 
-// Firebase config for middleware (replace with your own config)
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyDrGnVzr3nvLSF0C9JUYdmNLlQPcFGxLtk",
   authDomain: "immg-eb767.firebaseapp.com",
