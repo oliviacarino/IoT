@@ -12,3 +12,8 @@ A cute, simplistic device that displays messages to your loved ones <3
 * Optional Enclosure
 
 ## Software
+### Architecture
+
+### Dependencies
+
+## Resources & Notes

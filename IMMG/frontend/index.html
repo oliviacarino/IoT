@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LoveNote</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>LoveNote</h1>
+        <canvas id="draw-canvas" width="400" height="300"></canvas>
+
+        <div class="controls">
+            <label for="text-input">Text:</label>
+            <input type="text" id="text-input" placeholder="Write something sweet" />
+            <button onclick="addText()">Add Text</button>
+        </div>
+
+        <div class="tools">
+            <label for="thickness">Pencil:</label>
+            <input type="range" min="1" max="10" value="2" id="thickness" />
+
+            <button onclick="setTool('draw')" id="draw-btn" class="active">🖊️ Draw</button>
+            <button onclick="setTool('erase')" id="erase-btn">🧽 Erase</button>
+            <button onclick="clearCanvas()">🗑️ Clear</button>
+        </div>
+
+        <button class="send-btn" onclick="sendImage()">💌 Send</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
