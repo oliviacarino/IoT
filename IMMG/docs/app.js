@@ -6,66 +6,68 @@ let drawing = false;
 let tool = "draw";
 let lastPos = { x: 0, y: 0 };
 
+// Firebase config for middleware (replace with your own config)
+const firebaseConfig = {
+  apiKey: "AIzaSyDrGnVzr3nvLSF0C9JUYdmNLlQPcFGxLtk",
+  authDomain: "immg-eb767.firebaseapp.com",
+  databaseURL: "https://immg-eb767-default-rtdb.firebaseio.com",
+  projectId: "immg-eb767",
+  storageBucket: "immg-eb767.firebasestorage.app",
+  messagingSenderId: "407794462813",
+  appId: "1:407794462813:web:cd56f4aadde9ec4b199db4"
+};
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+const firebaseRef = database.ref("images");
+
 function initCanvas() {
   ctx.fillStyle = "white";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 initCanvas();
 
-canvas.addEventListener("mousedown", (e) => {
-  startDrawing(e);
-});
-canvas.addEventListener("mousemove", (e) => {
-  draw(e);
-});
-canvas.addEventListener("mouseup", stopDrawing);
-canvas.addEventListener("mouseleave", stopDrawing);
-
-// Touch support
-canvas.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  if (e.touches.length > 0) startDrawing(e.touches[0]);
-}, { passive: false });
-
-canvas.addEventListener("touchmove", (e) => {
-  e.preventDefault();
-  if (e.touches.length > 0) draw(e.touches[0]);
-}, { passive: false });
-
-canvas.addEventListener("touchend", (e) => {
-  e.preventDefault();
-  stopDrawing();
-}, { passive: false });
-
 function getCanvasPos(e) {
   const rect = canvas.getBoundingClientRect();
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
   return {
-    x: (e.clientX - rect.left) * (canvas.width / rect.width),
-    y: (e.clientY - rect.top) * (canvas.height / rect.height),
+    x: clientX - rect.left,
+    y: clientY - rect.top
   };
 }
 
 function startDrawing(e) {
+  e.preventDefault();
   drawing = true;
   const pos = getCanvasPos(e);
   lastPos = pos;
   ctx.beginPath();
   ctx.moveTo(pos.x, pos.y);
-  ctx.strokeStyle = tool === "erase" ? "white" : "black";
-  ctx.lineWidth = tool === "erase" ? 20 : thicknessInput.value;
+  ctx.strokeStyle = (tool === "erase") ? "white" : "black";
+  ctx.lineWidth = (tool === "erase") ? 20 : thicknessInput.value;
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
 }
 
 function draw(e) {
   if (!drawing) return;
+  e.preventDefault();
   const pos = getCanvasPos(e);
-  ctx.lineTo(pos.x, pos.y);
-  ctx.stroke();
-  lastPos = pos;
+  const dist = Math.hypot(pos.x - lastPos.x, pos.y - lastPos.y);
+  const steps = Math.ceil(dist / 2);
+  for (let i = 1; i <= steps; i++) {
+    const x = lastPos.x + ((pos.x - lastPos.x) * i) / steps;
+    const y = lastPos.y + ((pos.y - lastPos.y) * i) / steps;
+    ctx.beginPath();
+    ctx.moveTo(lastPos.x, lastPos.y);
+    ctx.lineTo(x, y);
+    ctx.stroke();
+    lastPos = { x, y };
+  }
 }
 
-function stopDrawing() {
+function stopDrawing(e) {
+  e.preventDefault();
   drawing = false;
   ctx.beginPath();
 }
@@ -97,31 +99,23 @@ function showToast(message) {
   }
   toast.textContent = message;
   toast.classList.add("show");
-  setTimeout(() => {
-    toast.classList.remove("show");
-  }, 3000);
+  setTimeout(() => toast.classList.remove("show"), 3000);
 }
 
 function sendImage() {
   const dataURL = canvas.toDataURL("image/png");
-  fetch("https://your-backend-or-storage.com/upload", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ image: dataURL }),
-  })
+  const messageRef = firebaseRef.push();
+  messageRef
+    .set({ image: dataURL, timestamp: Date.now() })
     .then(() => showToast("Message sent!"))
-    .catch(() => showToast("Failed to send message."));
+    .catch(() => showToast("Failed to send."));
 }
 
-// Firebase config
-const firebaseConfig = {
-  apiKey: "AIzaSyDrGnVzr3nvLSF0C9JUYdmNLlQPcFGxLtk",
-  authDomain: "immg-eb767.firebaseapp.com",
-  databaseURL: "https://immg-eb767-default-rtdb.firebaseio.com",
-  projectId: "immg-eb767",
-  storageBucket: "immg-eb767.firebasestorage.app",
-  messagingSenderId: "407794462813",
-  appId: "1:407794462813:web:cd56f4aadde9ec4b199db4"
-};
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
+canvas.addEventListener("mousedown", startDrawing);
+canvas.addEventListener("mousemove", draw);
+canvas.addEventListener("mouseup", stopDrawing);
+canvas.addEventListener("mouseout", stopDrawing);
+
+canvas.addEventListener("touchstart", startDrawing, { passive: false });
+canvas.addEventListener("touchmove", draw, { passive: false });
+canvas.addEventListener("touchend", stopDrawing, { passive: false });

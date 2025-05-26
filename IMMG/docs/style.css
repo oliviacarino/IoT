@@ -9,8 +9,6 @@ body {
     flex-direction: column;
     align-items: center;
     color: #7a49a5;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -18,28 +16,23 @@ body {
     border-radius: 16px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(200, 148, 255, 0.3);
-    max-width: 420px;
-    width: 90%;
+    max-width: 500px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.canvas-wrapper {
-    width: 100%;
-    border-radius: 12px;
-    overflow: hidden;
+canvas {
     border: 2px solid #d8b4fe;
     background-color: white;
-    margin-bottom: 16px;
+    border-radius: 12px;
     box-shadow: 0 4px 12px rgba(200, 148, 255, 0.3);
-}
-
-canvas {
+    touch-action: none;
+    margin-bottom: 16px;
     width: 100%;
     height: auto;
-    display: block;
-    touch-action: none;
+    max-width: 100%;
 }
 
 .controls {
@@ -52,7 +45,7 @@ canvas {
 
 button,
 input[type="range"] {
-    font-family: 'Comic Neue', cursive;
+    font-family: inherit;
     background-color: #e9d5ff;
     border: 2px solid #d8b4fe;
     border-radius: 10px;
