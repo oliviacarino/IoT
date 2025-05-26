@@ -1,5 +1,5 @@
 body {
-    font-family: "Comic Sans MS", "Chalkboard SE", cursive;
+    font-family: 'Comic Neue', cursive;
     background-color: #f5e6ff;
     background-image: radial-gradient(#f3d9ff 1px, transparent 1px);
     background-size: 20px 20px;
@@ -9,6 +9,8 @@ body {
     flex-direction: column;
     align-items: center;
     color: #7a49a5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -38,7 +40,6 @@ canvas {
     height: auto;
     display: block;
     touch-action: none;
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23c084fc" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 1.01 4.5 2.09C13.09 4.01 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') 6 18, auto;
 }
 
 .controls {
@@ -51,7 +52,7 @@ canvas {
 
 button,
 input[type="range"] {
-    font-family: inherit;
+    font-family: 'Comic Neue', cursive;
     background-color: #e9d5ff;
     border: 2px solid #d8b4fe;
     border-radius: 10px;
@@ -71,15 +72,6 @@ input[type="range"]:hover {
 button.active {
     background-color: #d8b4fe;
     color: white;
-}
-
-input[type="text"] {
-    border: 2px solid #d8b4fe;
-    border-radius: 10px;
-    padding: 6px 10px;
-    font-size: 14px;
-    width: 100%;
-    box-sizing: border-box;
 }
 
 .toast {

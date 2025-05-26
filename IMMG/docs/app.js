@@ -12,61 +12,60 @@ function initCanvas() {
 }
 initCanvas();
 
-canvas.addEventListener("mousedown", startDrawing);
+canvas.addEventListener("mousedown", (e) => {
+  startDrawing(e);
+});
+canvas.addEventListener("mousemove", (e) => {
+  draw(e);
+});
 canvas.addEventListener("mouseup", stopDrawing);
-canvas.addEventListener("mousemove", draw);
+canvas.addEventListener("mouseleave", stopDrawing);
 
-canvas.addEventListener("touchstart", (e) => startDrawing(e.touches[0]), { passive: false });
-canvas.addEventListener("touchend", stopDrawing);
-canvas.addEventListener("touchmove", (e) => draw(e.touches[0]), { passive: false });
+// Touch support
+canvas.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  if (e.touches.length > 0) startDrawing(e.touches[0]);
+}, { passive: false });
+
+canvas.addEventListener("touchmove", (e) => {
+  e.preventDefault();
+  if (e.touches.length > 0) draw(e.touches[0]);
+}, { passive: false });
+
+canvas.addEventListener("touchend", (e) => {
+  e.preventDefault();
+  stopDrawing();
+}, { passive: false });
 
 function getCanvasPos(e) {
   const rect = canvas.getBoundingClientRect();
   return {
     x: (e.clientX - rect.left) * (canvas.width / rect.width),
-    y: (e.clientY - rect.top) * (canvas.height / rect.height)
+    y: (e.clientY - rect.top) * (canvas.height / rect.height),
   };
 }
 
 function startDrawing(e) {
-  e.preventDefault();
   drawing = true;
-
   const pos = getCanvasPos(e);
   lastPos = pos;
-
   ctx.beginPath();
   ctx.moveTo(pos.x, pos.y);
-
-  ctx.strokeStyle = (tool === "erase") ? "white" : "black";
-  ctx.lineWidth = (tool === "erase") ? 20 : thicknessInput.value;
+  ctx.strokeStyle = tool === "erase" ? "white" : "black";
+  ctx.lineWidth = tool === "erase" ? 20 : thicknessInput.value;
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
 }
 
 function draw(e) {
   if (!drawing) return;
-  e.preventDefault();
-
   const pos = getCanvasPos(e);
-  const dist = Math.hypot(pos.x - lastPos.x, pos.y - lastPos.y);
-  const steps = Math.ceil(dist / 2);
-
-  for (let i = 1; i <= steps; i++) {
-    const x = lastPos.x + ((pos.x - lastPos.x) * i) / steps;
-    const y = lastPos.y + ((pos.y - lastPos.y) * i) / steps;
-
-    ctx.beginPath();
-    ctx.moveTo(lastPos.x, lastPos.y);
-    ctx.lineTo(x, y);
-    ctx.stroke();
-
-    lastPos = { x, y };
-  }
+  ctx.lineTo(pos.x, pos.y);
+  ctx.stroke();
+  lastPos = pos;
 }
 
-function stopDrawing(e) {
-  e.preventDefault();
+function stopDrawing() {
   drawing = false;
   ctx.beginPath();
 }
@@ -98,7 +97,6 @@ function showToast(message) {
   }
   toast.textContent = message;
   toast.classList.add("show");
-
   setTimeout(() => {
     toast.classList.remove("show");
   }, 3000);
