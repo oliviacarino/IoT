@@ -18,3 +18,7 @@ A cute, simplistic device that displays messages to your loved ones <3
 
 ### Notes
 - [UPDATE] add better UI for adding text
+- [UPDATE] add username and pass to web ui
+- [UPDATE] add Admin abilities (turn on/off Pi, terminal access?, clear screen)
+- [UPDATE] make canvas bigger (7.5in, responsive)
+- [FIX] scale cursor on mobile (not aligned/calibrated correctly)
