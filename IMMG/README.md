@@ -8,6 +8,7 @@ A cute, simplistic device that displays messages to your loved ones <3
 ## Hardware
 * E-paper display module
 * Raspberry Pi (or a microcontroller)
+* MicroSD Card
 * Power Supply (USB power adapter + cable, or a battery pack if you want portability.)
 * Optional Enclosure
 
@@ -21,4 +22,5 @@ A cute, simplistic device that displays messages to your loved ones <3
 - [UPDATE] add username and pass to web ui
 - [UPDATE] add Admin abilities (turn on/off Pi, terminal access?, clear screen)
 - [UPDATE] make canvas bigger (7.5in, responsive)
+- [UPDATE] add notes on overcoming any errors / bugs (e.g, waveshare_epd ModuleNoteFoundError, etc.)
 - [FIX] scale cursor on mobile (not aligned/calibrated correctly)
