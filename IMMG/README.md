@@ -18,6 +18,10 @@ A cute, simplistic device that displays messages to your loved ones <3
 ### Dependencies
 
 ### Notes
+#### FYI
+* If you're having any issues with connecting the Pi to your Firebase Realtime DB, ensure in the DB's rules that the read/write rules have not expired.
+
+#### Upcoming Updates, Bug Fixes, etc.
 - [UPDATE] add better UI for adding text
 - [UPDATE] add username and pass to web ui
 - [UPDATE] add Admin abilities (turn on/off Pi, terminal access?, clear screen)
