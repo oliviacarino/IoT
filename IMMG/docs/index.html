@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>IMMG</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IMMG</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <canvas id="draw-canvas" width="480" height="320"></canvas>
+  <div id="login-container">
+    <h2>Login</h2>
+    <input id="email" type="email" placeholder="Email" />
+    <input id="password" type="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+  </div>
 
-        <div class="controls">
-            <button id="draw-btn" class="active" onclick="setTool('draw')">Pencil</button>
-            <button id="erase-btn" onclick="setTool('erase')">Eraser</button>
-            <label for="thickness">Thickness:</label>
-            <input type="range" id="thickness" min="1" max="20" value="4" />
-            <button onclick="clearCanvas()">Clear</button>
-        </div>
+  <div class="container" id="app-container" style="display: none;">
+    <canvas id="draw-canvas" width="800" height="480"></canvas>
 
-        <div class="send-buttons">
-            <button onclick="sendImage()">Send Message</button>
-        </div>
+    <div class="controls">
+      <button id="draw-btn" class="active" onclick="setTool('draw')">Pencil</button>
+      <button id="erase-btn" onclick="setTool('erase')">Eraser</button>
+      <label for="thickness" style="color: rgb(224, 224, 224)">Thickness:</label>
+      <input type="range" id="thickness" min="1" max="20" value="4" />
+      <button onclick="clearCanvas()">Clear</button>
     </div>
 
-    <script src="app.js"></script>
-</body>
+    <div class="text-controls">
+      <input type="text" id="text-input" placeholder="Enter text here" />
+      <button onclick="addText()">Add Text</button>
+    </div>
 
+    <div class="send-buttons">
+      <button onclick="sendImage()">Send Message</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
 </html>
