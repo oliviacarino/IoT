@@ -1,0 +1,97 @@
+body {
+    font-family: 'Comic Neue', cursive;
+    background-color: #f5e6ff;
+    background-image: radial-gradient(#f3d9ff 1px, transparent 1px);
+    background-size: 20px 20px;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #7a49a5;
+}
+
+.container {
+    background-color: #fff0ff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(200, 148, 255, 0.3);
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+canvas {
+    border: 2px solid #d8b4fe;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(200, 148, 255, 0.3);
+    touch-action: none;
+    margin-bottom: 16px;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+button,
+input[type="range"] {
+    font-family: inherit;
+    background-color: #e9d5ff;
+    border: 2px solid #d8b4fe;
+    border-radius: 10px;
+    padding: 6px 12px;
+    cursor: pointer;
+    color: #6b21a8;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+button:hover,
+input[type="range"]:hover {
+    background-color: #f3e8ff;
+    transform: scale(1.05);
+}
+
+button.active {
+    background-color: #d8b4fe;
+    color: white;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e9d5ff;
+    color: #6b21a8;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(136, 72, 171, 0.2);
+    animation: fadeOut 3s ease-in-out forwards;
+    z-index: 999;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
