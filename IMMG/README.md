@@ -10,7 +10,7 @@ A cute, simplistic device that displays messages to your loved ones <3
 * Raspberry Pi (or a microcontroller)
 * MicroSD Card
 * Power Supply (USB power adapter + cable, or a battery pack if you want portability.)
-* Optional Enclosure
+* Optional Enclosure -- [Link to the one I used](https://www.printables.com/model/288612-housing-for-75-inch-waveshare-e-ink)
 
 ## Software
 ### Architecture
@@ -23,8 +23,7 @@ A cute, simplistic device that displays messages to your loved ones <3
 
 #### Upcoming Updates, Bug Fixes, etc.
 - [UPDATE] add better UI for adding text
-- [UPDATE] add username and pass to web ui
-- [UPDATE] add Admin abilities (turn on/off Pi, terminal access?, clear screen)
 - [UPDATE] make canvas bigger (7.5in, responsive)
 - [UPDATE] add notes on overcoming any errors / bugs (e.g, waveshare_epd ModuleNoteFoundError, etc.)
+- [UPDATE] add image/gif of final product (include in next release)
 - [FIX] scale cursor on mobile (not aligned/calibrated correctly)
