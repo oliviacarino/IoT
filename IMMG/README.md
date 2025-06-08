@@ -50,7 +50,6 @@ BUSY      ->   GPIO 24
 
 #### Upcoming Updates, Bug Fixes, etc.
 - [UPDATE] add better UI for adding text
-- [UPDATE] make canvas bigger (7.5in, responsive)
+- [UPDATE] add ability to see current image of display
 - [UPDATE] add notes on overcoming any errors / bugs (e.g, waveshare_epd ModuleNoteFoundError, etc.)
 - [UPDATE] add image/gif of final product (include in next release)
-- [FIX] scale cursor on mobile (not aligned/calibrated correctly)
