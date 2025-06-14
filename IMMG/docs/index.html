@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,7 +28,9 @@
       <button id="erase-btn" onclick="setTool('erase')">Eraser</button>
       <label for="thickness" style="color: rgb(224, 224, 224)">Thickness:</label>
       <input type="range" id="thickness" min="1" max="20" value="4" />
-      <button onclick="clearCanvas()">Clear</button>
+      <button id="clear-btn" onclick="clearCanvas()">Clear</button>
+      <button id="undo-btn" onclick="undo()">Undo</button>
+      <button id="redo-btn" onclick="redo()">Redo</button>
     </div>
 
     <div class="text-controls">
@@ -39,8 +42,10 @@
       <button onclick="sendImage()">Send Message</button>
       <button onclick="logout()">Logout</button>
     </div>
+    <div id="toast" class="toast"></div>
   </div>
 
   <script src="app.js"></script>
 </body>
+
 </html>
