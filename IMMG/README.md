@@ -29,6 +29,9 @@ BUSY      ->   GPIO 24
 ```
 ---
 
+#### Resources
+1. [Raspberry Pi Guides for SPI e-Paper](https://www.waveshare.com/wiki/Template:Raspberry_Pi_Guides_for_SPI_e-Paper)
+
 ## 🖥️ Software  
 
 ### Architecture  
@@ -45,6 +48,10 @@ BUSY      ->   GPIO 24
 ---
 
 ### Notes
+1. Installing BCM2835 Libraries
+    - [Great tutorial here, skip to "Install BCM2835 libraries"](https://www.instructables.com/Smart-Device-Controller-Weather-Station-Using-IFTT/)
+    - [More documentation on installation if needed](http://www.lcdwiki.com/res/PublicFile/Raspberrypi_Use_Illustration_EN.pdf)
+    - [C library documentation for Broadcom BCM 2835 as used in Raspberry Pi](https://www.airspayce.com/mikem/bcm2835/)
 #### FYI
 * If you're having any issues with connecting the Pi to your Firebase Realtime DB, ensure in the DB's rules that the read/write rules have not expired.
 

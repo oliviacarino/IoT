@@ -119,8 +119,17 @@ thicknessInput.addEventListener("input", () => {
   }
 });
 
+// function clearCanvas() {
+//   initCanvas();
+// }
 function clearCanvas() {
   initCanvas();
+
+  // Send a "clear" command to Firebase
+  const messageRef = firebaseRef.push();
+  messageRef.set({ clear: true, timestamp: Date.now() })
+    .then(() => showToast("Canvas cleared!"))
+    .catch(() => showToast("Failed to clear remotely."));
 }
 
 function addText() {
