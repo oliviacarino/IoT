@@ -46,7 +46,6 @@ BUSY      ->   GPIO 24
 - `waveshare_epd` (clone from the [official Waveshare e-Paper repo](https://github.com/waveshareteam/e-Paper.git))  
 
 ---
-
 ### Notes
 1. Installing BCM2835 Libraries
     - [Great tutorial here, skip to "Install BCM2835 libraries"](https://www.instructables.com/Smart-Device-Controller-Weather-Station-Using-IFTT/)
@@ -57,6 +56,5 @@ BUSY      ->   GPIO 24
 
 #### Upcoming Updates, Bug Fixes, etc.
 - [UPDATE] add better UI for adding text
-- [UPDATE] add ability to see current image of display
 - [UPDATE] add notes on overcoming any errors / bugs (e.g, waveshare_epd ModuleNoteFoundError, etc.)
 - [UPDATE] add image/gif of final product (include in next release)
