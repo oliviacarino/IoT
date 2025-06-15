@@ -1,6 +1,5 @@
 # I Miss My Girlfriend (IMMG)™  
-<p align="center"><img alt="IMMG Hardware" src="kit.jpeg" width="400"></p>  
-<p align="center"><em>⭐~star~⭐ if you cry every tim</em></p>
+<p align="center"><img alt="IMMG Hardware" src="logo.jpg" width="600"></p>  
 
 ## 💌 Purpose  
 A cute, minimalistic device that lets you send messages to a loved one from anywhere in the world. Displays messages or drawings on an e-paper screen for a cozy, always-on experience.
@@ -58,3 +57,6 @@ BUSY      ->   GPIO 24
 - [UPDATE] add better UI for adding text
 - [UPDATE] add notes on overcoming any errors / bugs (e.g, waveshare_epd ModuleNoteFoundError, etc.)
 - [UPDATE] add image/gif of final product (include in next release)
+---
+<p align="center"><img alt="IMMG Hardware" src="kit.jpeg" width="400"></p>  
+<p align="center"><em>⭐~star~⭐ if you cry every tim</em></p>
