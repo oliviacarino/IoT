@@ -58,6 +58,8 @@ BUSY      ->   GPIO 24
 - [UPDATE] add better UI for adding text
 - [UPDATE] add notes on overcoming any errors / bugs (e.g, waveshare_epd ModuleNoteFoundError, etc.)
 - [UPDATE] add image/gif of final product (include in next release)
+
 ---
+
 <p align="center"><img alt="IMMG Hardware" src="kit.jpeg" width="400"></p>  
 <p align="center"><em>⭐~star~⭐ if you cry every tim</em></p>
