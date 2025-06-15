@@ -1,5 +1,6 @@
 # I Miss My Girlfriend (IMMG)™  
-<p align="center"><img alt="IMMG Hardware" src="logo.jpg" width="600"></p>  
+<p align="center"><img alt="IMMG Hardware" src="logo.jpg" width="600"></p> 
+<p align="center"><em>Art by the lovely Annabel Reed</em></p>
 
 ## 💌 Purpose  
 A cute, minimalistic device that lets you send messages to a loved one from anywhere in the world. Displays messages or drawings on an e-paper screen for a cozy, always-on experience.
