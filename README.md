@@ -1,6 +1,6 @@
 # IoT Projects 🌐🔗📱🏠
 
-<p align="center"><img alt="IoT Projects Banner" src="images/iot_projects_banner.jpg" width="700"></p>  
+<!-- <p align="center"><img alt="IoT Projects Banner" src="images/iot_projects_banner.jpg" width="700"></p>  -->
 
 Welcome to my IoT Projects repository! This repository contains various Internet of Things (IoT) projects that I am working on. Each project folder includes all the necessary files, code, and documentation to understand and replicate the projects.
 
