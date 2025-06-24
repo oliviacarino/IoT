@@ -10,12 +10,11 @@ Welcome to my IoT Projects repository! This repository contains various Internet
 
 ## Pair an ESP01s with the OpenMV Camera
 This project provides an internet connection to the OpenMV H7 R1 Camera module using an ESP01s. The folder contains prototype setup instructions, code samples, and example applications.
-
 [Go to Breadboard Kit with OpenMV Cam](./Breadboard-Kit-with-OpenMV-Cam)
-
-## Programming a Roomba with Custom Sounds
-- in progress -
 
 ## A Remote e-Paper Notepad for Leaving Adorable Messages
 A cute, simplistic device that displays messages to your loved ones. (or anyone really :))
-[Check out the WIP!](https://oliviacarino.github.io/IoT/IMMG/docs/index.html)
+[Check it out!](https://oliviacarino.github.io/IoT/IMMG/docs/index.html) -- please note this is locked behind a login screen. If you're curious to see a full demo, ping me :)
+
+## Programming a Roomba with Custom Sounds
+- in progress -
