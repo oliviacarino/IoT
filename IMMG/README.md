@@ -4,6 +4,14 @@
 
 ## 💌 Purpose  
 A cute, minimalistic device that lets you send messages to a loved one from anywhere in the world. Displays messages or drawings on an e-paper screen for a cozy, always-on experience.
+<p align="center">
+  <table align="center" style="margin: 0 auto;">
+    <tr>
+      <td><img src="final.gif" alt="Final product as gif" width="300"></td>
+      <td><img src="final.jpg" alt="Final product as image" width="300"></td>
+    </tr>
+  </table>
+</p>
 
 ---
 
