@@ -4,7 +4,7 @@ const thicknessInput = document.getElementById("thickness");
 
 // Firebase config (unchanged, put your config here)
 const firebaseConfig = {
-  apiKey: "AIzaSyDrGnVzr3nvLSF0C9JUYdmNLlQPcFGxLtk",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "immg-eb767.firebaseapp.com",
   databaseURL: "https://immg-eb767-default-rtdb.firebaseio.com",
   projectId: "immg-eb767",
