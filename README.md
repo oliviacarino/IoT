@@ -10,7 +10,8 @@ Welcome to my IoT Projects repository! This repository contains various Internet
 
 1. [Pair an ESP01s with the OpenMV Camera](https://github.com/oliviacarino/IoT/tree/main/ESP01s-OpenMV)  
 2. [A Remote e-Paper Notepad for Leaving Adorable Messages](https://oliviacarino.github.io/IoT/IMMG) 
-3. [Programming a Roomba with Custom Sounds](https://github.com/oliviacarino/IoT/tree/main/Kiramman)   
+3. [DIY a Digital Watch](https://github.com/oliviacarino/IoT/tree/Watch)
+<!--4. [Programming a Roomba with Custom Sounds](https://github.com/oliviacarino/IoT/tree/main/Kiramman) --> 
 
 ---
 
@@ -40,10 +41,30 @@ A cute, simplistic device that displays messages to your loved ones (or anyone r
 
 ---
 
+## A Digital Watch 
+    `　　　　　　　　　　ｒ＠
+    ニニニニヽ　　　/ /|｜
+    　　　　　 ∥.　 / /　|｜
+    0( ｡дﾟ) ∥ 　/ / 　|｜
+    ]( つ¶つ¶　　/ / 　 r―､
+    ﾄ┳ヽ厂￣`/ /　　　| 　|
+    ｢￣￣￣L/_/　　　　jjjjj　　　
+    （◎￣◎)三)=)三)
+
+        --In progress--
+    
+    .　　　　　ｒ-ー､
+    . 　　　　/_+＿丶
+    　　　 (( (｡дﾟ )　))
+    　　　(( ｏ┳ｏ )　))
+    　　　((　[圓]Ｊ　))　　　
+    　　　::::::┻┻:::::::::::::::
+<!--
+---
+
 ## Programming a Roomba with Custom Sounds
 
-<!-- <p align="left"><img src="images/roomba_custom_sounds_progress.jpg" alt="Roomba Custom Sounds in Progress" width="400"></p> -->
+ <p align="left"><img src="images/roomba_custom_sounds_progress.jpg" alt="Roomba Custom Sounds in Progress" width="400"></p> 
 
--- *in progress* --
-
----
+--*in progress*--
+-->
