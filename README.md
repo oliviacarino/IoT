@@ -1,4 +1,4 @@
-# IoT Projects 🌐🔗📱🏠
+# IoT Projects 
 
 <!-- <p align="center"><img alt="IoT Projects Banner" src="images/iot_projects_banner.jpg" width="700"></p>  -->
 
