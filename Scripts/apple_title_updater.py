@@ -1,13 +1,14 @@
 from mutagen.mp3 import MP3  
 from mutagen.easyid3 import EasyID3  
 import mutagen.id3  
-from mutagen.id3 import ID3, TIT2, TIT3, TALB, TPE1, TRCK, TYER  
+from mutagen.id3 import ID3, TIT2, TIT3, TALB, TPE1, TRCK, TYER, APIC, ID3NoHeaderError
   
 import glob  
 
 import numpy as np  
 
 import os
+import requests
 
 files = glob.glob("../temp/*.mp3")
 
@@ -32,8 +33,37 @@ for path in files:
     # save changes
     mp3file.save()
 
-    print(f"Tagged: {artist} - {title}")
+    # fetch album art
+    query = f"{artist} {title}"
+    resp = requests.get(
+        "https://itunes.apple.com/search",
+        params={"term": query, "media": "music", "limit": 1},
+        timeout=10,
+    )
 
-# mp3file = MP3(files[0], ID3=EasyID3)
-# print(mp3file)
+    results = resp.json().get("results")
+    if not results:
+        print(f"No art found for: {artist} - {title}")
+        continue
 
+    # Use higher-res image
+    art_url = results[0]["artworkUrl100"].replace("100x100", "600x600")
+    image_bytes = requests.get(art_url, timeout=10).content
+
+    # ---- embed art ----
+    tags = ID3(path)
+
+    # Remove existing art if present
+    tags.delall("APIC")
+
+    tags.add(
+        APIC(
+            encoding=3,
+            mime="image/jpeg",
+            type=3,
+            desc="Cover",
+            data=image_bytes,
+        )
+    )
+
+    tags.save(path)
