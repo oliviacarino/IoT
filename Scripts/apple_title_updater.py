@@ -4,15 +4,13 @@ import mutagen.id3
 from mutagen.id3 import ID3, TIT2, TIT3, TALB, TPE1, TRCK, TYER, APIC, ID3NoHeaderError
   
 import glob  
-
-import numpy as np  
-
 import os
 import requests
+from tqdm import tqdm 
 
-files = glob.glob("../temp/*.mp3")
+files = glob.glob("../temp/*.mp3") # update with directory 
 
-for path in files:
+for path in tqdm(files, desc="Tagging MP3s", unit="file"):
     filename = os.path.basename(path)
 
     # extract each artist and  title name
@@ -43,7 +41,7 @@ for path in files:
 
     results = resp.json().get("results")
     if not results:
-        print(f"No art found for: {artist} - {title}")
+        tqdm.write(f"No art found: {artist} - {title}")
         continue
 
     # Use higher-res image
