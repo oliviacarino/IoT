@@ -68,5 +68,5 @@ A cute, simplistic device that displays messages to your loved ones (or anyone r
 -->
 
 ## Misc Scripts
-### Update MP3 Files with Correct Title/Artist in Apple Music
+### [Update MP3 Files with Correct Title/Artist in Apple Music](https://github.com/oliviacarino/IoT/Scripts)
 I created this script to help me edit (in bulk) audio files that are not showing up correctly in the Apple Music App on MacOS. I found AppleScripts in my search, but they only work with ITunes. If you're like me and now have Apple Music on your laptop, then [this](https://github.com/oliviacarino/IoT/Scripts) is for you! 
