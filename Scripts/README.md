@@ -1,5 +1,6 @@
 # Scripts
-```
+
+```text
        ____________________
       |\                   \      l____
       | \___________________\     |\   \
@@ -10,7 +11,7 @@
  \/.-.\_______________________\/.-.\____\/.-.\
   ( @ )                        ( @ )  =  ( @ )
    `-'                          `-'       `-'
-```
+
 
 ## Update MP3 Files with Correct Title/Artist in Apple Music
 - [I followed the general plan from this article:](https://methodmatters.github.io/editing-id3-tags-mp3-meta-data-in-python/)
