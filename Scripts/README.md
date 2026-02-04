@@ -14,7 +14,7 @@
 ## Update MP3 Files with Correct Title/Artist in Apple Music
 - [Editing ID3 Tags](https://methodmatters.github.io/editing-id3-tags-mp3-meta-data-in-python/)
        - [More on ID3 Tags here:](https://dougscripts.com/itunes/itinfo/id3tags00.php)
-- [The Python ~mutagen~ library](https://mutagen.readthedocs.io/en/latest/api/index.html)
+- [The Python mutagen library](https://mutagen.readthedocs.io/en/latest/api/index.html)
 
 ### Step 1 - Gather Playlist CSV files
 Go to [https://exportify.net/](Exportify) to export and download your Spotify playlists as CSV files.
