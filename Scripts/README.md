@@ -32,3 +32,6 @@ Run `/Scripts/apple_title_updater.py` to format MP3 files in such a way that Itu
 
 ### Notes
 I ran into some rate limiting issues and Apple has 0 documentation on how many requests you're limited to. **This script takes some time to run (~17 minutes for ~400 songs/MP3 files).** I navigated this by added `sleep()` timers and waiting periods (`wait_seconds(60)`).
+
+## Shell Script for Batch Github Repo Import
+I installed Gitea within my personal server and imported all of my current private/public Github repositories using this script! 
